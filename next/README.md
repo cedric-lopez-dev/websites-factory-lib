@@ -6,7 +6,7 @@ This library aims to generate pages in [Next.js](https://nextjs.org) from your m
 # Getting Started
 
 ```bash
-npx install websites-factory-core
+npx install websites-factory
 ```
 
 This command creates a `websites-factory-modules` directory, which will be used to store the modules and the `websites-factory-config.json` file. It will also install the Websites Factory Core library in `node_modules`.
