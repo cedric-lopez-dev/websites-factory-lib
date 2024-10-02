@@ -1,0 +1,43 @@
+{
+    "modules": [
+        {
+            "name": "welcome",
+            "enabled": true
+        },
+        {
+            "name": "website",
+            "enabled": true
+        }
+    ],
+    "template": {
+        "/": {
+            "module": "welcome",
+            "page": "home",
+            "sections": [],
+            "layout": {},
+            "entities": [
+                "websitesFactory"
+            ],
+            "metadata": {
+                "title": "{{websitesFactory.name}} | Welcome!",
+                "description": "Ceci est la page d'accueil d'exemple de {{websitesFactory.name}}"
+            }
+        },
+        "test": {
+            "module": "website",
+            "page": "home",
+            "sections": [],
+            "layout": {},
+            "entities": [
+                "websitesFactory"
+            ],
+            "metadata": {
+                "title": "{{websitesFactory.name}} | Welcome!",
+                "description": "Ceci est la page d'accueil d'exemple de {{websitesFactory.name}}"
+            }
+        }
+    },
+    "entities": {
+        "websitesFactory": "websitesFactory"
+    }
+}

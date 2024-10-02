@@ -1,0 +1,39 @@
+networks:
+  traefik:
+    external: true
+
+services:
+  next-nossl:
+    profiles: [ "nossl" ]
+    image: node:alpine
+    container_name: "${WEBSITE_NAME}"
+    restart: always
+    volumes:
+      - .:/app
+    working_dir: /app/next
+    command: /bin/sh -c "npm install && npm run dev"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${WEBSITE_NAME}.rule=Host(`${DOMAIN_WEBSITE}`)"
+      - "traefik.http.routers.${WEBSITE_NAME}.entrypoints=${ENTRYPOINT}"
+      - "traefik.http.services.${WEBSITE_NAME}.loadbalancer.server.port=3000"
+    networks:
+      - traefik
+
+  next:
+    profiles: [ "ssl" ]
+    image: node:alpine
+    container_name: "${WEBSITE_NAME}"
+    restart: always
+    volumes:
+      - .:/app
+    working_dir: /app/next
+    command: /bin/sh -c "npm install && npm run dev"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${WEBSITE_NAME}.rule=Host(`${DOMAIN_WEBSITE}`)"
+      - "traefik.http.routers.${WEBSITE_NAME}.entrypoints=${ENTRYPOINT}"
+      - "traefik.http.services.${WEBSITE_NAME}.loadbalancer.server.port=3000"
+      - "traefik.http.routers.${WEBSITE_NAME}.tls.certresolver=myhttpchallenge"
+    networks:
+      - traefik
