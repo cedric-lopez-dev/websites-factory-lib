@@ -19,16 +19,26 @@ The modules provide pages and sections to the template of the `websites-factory-
 
 ## Websites-factory-config
 
-The configuration file consists of the list of modules and the template.
+The configuration file consists of the list of modules, the template, and the entities.
+
+### Modules Websites-factory-config
 
 ```json
-{
+
     "modules": [
         {
             "name": "welcome",
             "enabled": true
         }
-    ],
+    ]
+```
+- **Config**
+
+Mapping entities and more?
+
+### Template Websites-factory-config
+
+```json
     "template": {
         "/": {
             "module": "welcome",
@@ -36,16 +46,16 @@ The configuration file consists of the list of modules and the template.
             "sections": []
         }
     }
-}
-```
 
-### Template
+```
 
 - **Layout**
 
 - **Entities**
 
 - **Metadatada**
+
+- **SubPage**
 
 ## Modules
 
