@@ -9,7 +9,7 @@ This library aims to generate pages in [Next.js](https://nextjs.org) from your m
 npx install websites-factory
 ```
 
-This command creates a `websites-factory-modules` directory, which will be used to store the modules and the `websites-factory-config.json` file. It will also install the Websites Factory Core library in `node_modules`.
+This command creates a `websites-factory-modules` directory, which will be used to store the modules and the `websites-factory-config.json` file. It will also install the Websites Factory library in `node_modules`.
 
 > **Note**: The configuration file in this form is temporary. The idea is to eventually retrieve the configuration from a database. In that case, this will likely be used as the default configuration.
 
@@ -17,11 +17,11 @@ This command creates a `websites-factory-modules` directory, which will be used 
 
 The modules provide pages and sections to the template of the `websites-factory-config.json` file. This allows for the construction of the various pages of the site.
 
-## Websites-factory-config
+# Configuration
 
 The configuration file consists of the list of modules, the template, and the entities.
 
-### Modules Websites-factory-config
+## Modules config
 
 ```json
 
@@ -36,7 +36,7 @@ The configuration file consists of the list of modules, the template, and the en
 
 Mapping entities and more?
 
-### Template Websites-factory-config
+## Template Websites-factory-config
 
 ```json
     "template": {
@@ -57,7 +57,7 @@ Mapping entities and more?
 
 - **SubPage**
 
-## Modules
+# Modules
 
 Modules should be placed in the `websites-factory-modules` folder.
 The pages provided by the module should be placed in a `pages` folder and a folder named after the page.
