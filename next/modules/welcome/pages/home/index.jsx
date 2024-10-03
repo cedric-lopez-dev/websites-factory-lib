@@ -1,5 +1,5 @@
 
-const index = ({ children }) => {
+const Home = ({ children }) => {
     return (
         <>
             <div className="bg-white py-24 sm:py-32">
@@ -11,4 +11,4 @@ const index = ({ children }) => {
     );
 };
 
-export default index; 
+export default Home; 
