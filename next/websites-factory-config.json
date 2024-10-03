@@ -13,20 +13,12 @@
         "/": {
             "module": "welcome",
             "page": "home",
-            "sections": [],
-            "layout": {},
-            "entities": [
-                "websitesFactory"
+            "sections": [
+                {
+                    "module": "welcome",
+                    "name": "presentation"
+                }
             ],
-            "metadata": {
-                "title": "{{websitesFactory.name}} | Welcome!",
-                "description": "Ceci est la page d'accueil d'exemple de {{websitesFactory.name}}"
-            }
-        },
-        "test": {
-            "module": "website",
-            "page": "home",
-            "sections": [],
             "layout": {},
             "entities": [
                 "websitesFactory"

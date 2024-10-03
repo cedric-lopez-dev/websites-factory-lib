@@ -5,6 +5,12 @@ This library aims to generate pages in [Next.js](https://nextjs.org) from your m
 
 # Getting Started
 
+## Requirements
+
+Website Factory is designed to be used with [Next.js](https://nextjs.org) and [Tailwind](https://tailwindui.com).
+
+## Installation
+
 ```bash
 npx install websites-factory
 ```
