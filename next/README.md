@@ -17,6 +17,20 @@ npx install websites-factory
 
 This command creates a `websites-factory-modules` directory, which will be used to store the modules and the `websites-factory-config.json` file. It will also install the Websites Factory library in `node_modules`.
 
+- **Tailwind**
+
+Ajoutez le lien pour tous les modules dans `tailwind.config.js`
+
+```js
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+ +   "./websites-factory-modules/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+```
+
+
 > **Note**: The configuration file in this form is temporary. The idea is to eventually retrieve the configuration from a database. In that case, this will likely be used as the default configuration.
 
 # Overview
@@ -39,7 +53,7 @@ The configuration file consists of the list of modules, the template, and the en
     ]
 ```
 - **Config**
-
+*Coming soon*
 Mapping entities and more?
 
 ## Template Websites-factory-config
