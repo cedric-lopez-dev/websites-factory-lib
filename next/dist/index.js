@@ -168,6 +168,7 @@ var replaceVariables = (metadataEntryContent, entitiesData) => {
 };
 
 // core/PageRenderer.tsx
+import React from "react";
 var PageRenderer = ({ pageResult }) => {
   const {
     PageComponent,

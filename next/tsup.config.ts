@@ -14,6 +14,23 @@ const copyModules = async () => {
     }
 };
 
+const copyConfig = async () => {
+    const configFileName = 'websites-factory-config.json';
+    const sourceFile = path.join(__dirname, configFileName);
+    const destDir = path.join(__dirname, 'dist');
+    try {
+        await fs.copyFile(sourceFile, path.join(destDir, configFileName));
+        console.log(`File ${configFileName} copied to ${destDir}`);
+    } catch (err) {
+        console.error(`Error during copy: ${err}`);
+    }
+}
+
+const copy = async () => {
+    copyModules()
+    copyConfig()
+}
+
 export default defineConfig([
     {
         entry: ['lib/index.ts'],
@@ -22,7 +39,7 @@ export default defineConfig([
         dts: true,
         shims: true,
         clean: true,
-        onSuccess: copyModules,
+        onSuccess: copy,
     },
     {
         entry: ['lib/bin/index.ts'],

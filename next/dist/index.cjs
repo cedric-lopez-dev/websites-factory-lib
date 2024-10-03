@@ -206,6 +206,7 @@ var replaceVariables = (metadataEntryContent, entitiesData) => {
 };
 
 // core/PageRenderer.tsx
+var import_react = __toESM(require("react"), 1);
 var PageRenderer = ({ pageResult }) => {
   const {
     PageComponent,
@@ -213,12 +214,12 @@ var PageRenderer = ({ pageResult }) => {
     PageLayoutComponent
   } = pageResult;
   if (PageLayoutComponent) {
-    return /* @__PURE__ */ React.createElement(PageLayoutComponent, null, /* @__PURE__ */ React.createElement(PageComponent, null, pageSectionsComponents.map(
-      (Section, i) => Section ? /* @__PURE__ */ React.createElement(Section, { key: i }) : null
+    return /* @__PURE__ */ import_react.default.createElement(PageLayoutComponent, null, /* @__PURE__ */ import_react.default.createElement(PageComponent, null, pageSectionsComponents.map(
+      (Section, i) => Section ? /* @__PURE__ */ import_react.default.createElement(Section, { key: i }) : null
     )));
   }
-  return /* @__PURE__ */ React.createElement(PageComponent, null, pageSectionsComponents.map(
-    (Section, i) => Section ? /* @__PURE__ */ React.createElement(Section, { key: i }) : null
+  return /* @__PURE__ */ import_react.default.createElement(PageComponent, null, pageSectionsComponents.map(
+    (Section, i) => Section ? /* @__PURE__ */ import_react.default.createElement(Section, { key: i }) : null
   ));
 };
 // Annotate the CommonJS export names for ESM import in node:

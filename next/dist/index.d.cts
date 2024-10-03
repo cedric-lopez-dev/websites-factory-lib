@@ -1,5 +1,4 @@
-import * as react from 'react';
-import { ComponentType, PropsWithChildren } from 'react';
+import React, { ComponentType, PropsWithChildren } from 'react';
 
 interface Metadata {
     [path: string]: string;
@@ -28,6 +27,6 @@ declare const populateMetadata: (pageResult: PageResult) => Promise<Metadata>;
 
 declare const PageRenderer: ({ pageResult }: {
     pageResult: PageResult;
-}) => react.JSX.Element;
+}) => React.JSX.Element;
 
 export { PageRenderer, getPage, populateMetadata };

@@ -45,11 +45,11 @@ var createDirectories = (baseDir) => {
 };
 var copyConfigFile = (baseDir) => {
   const configFileName = "websites-factory-config.json";
-  const sourcePath = import_path.default.join(__dirname, configFileName);
   const destPath = import_path.default.join(baseDir, configFileName);
+  const sourceFilePath = import_path.default.join(baseDir, "node_modules", "websites-factory", "dist", "websites-factory-config.json");
   if (!import_fs.default.existsSync(destPath)) {
     try {
-      import_fs.default.copyFileSync(sourcePath, destPath);
+      import_fs.default.copyFileSync(sourceFilePath, destPath);
       console.log(`Config file copied: ${configFileName}`);
     } catch (error) {
       console.error(`Error copying config file: ${error}`);
@@ -57,6 +57,44 @@ var copyConfigFile = (baseDir) => {
   } else {
     console.log(`Config file already exists: ${configFileName}`);
   }
+};
+var copyModules = (baseDir) => {
+  const sourceDir = import_path.default.join(baseDir, "node_modules", "websites-factory", "dist", "modules");
+  const destDir = import_path.default.join(baseDir, "websites-factory-modules");
+  if (import_fs.default.existsSync(sourceDir)) {
+    import_fs.default.readdirSync(sourceDir).forEach((item) => {
+      const srcItemPath = import_path.default.join(sourceDir, item);
+      const destItemPath = import_path.default.join(destDir, item);
+      if (import_fs.default.lstatSync(srcItemPath).isDirectory()) {
+        if (!import_fs.default.existsSync(destItemPath)) {
+          import_fs.default.mkdirSync(destItemPath, { recursive: true });
+          console.log(`Directory created: ${destItemPath}`);
+        }
+        copyDirectory(srcItemPath, destItemPath);
+      } else {
+        import_fs.default.copyFileSync(srcItemPath, destItemPath);
+        console.log(`File copied: ${srcItemPath} to ${destItemPath}`);
+      }
+    });
+  } else {
+    console.error(`Source directory does not exist: ${sourceDir}`);
+  }
+};
+var copyDirectory = (src, dest) => {
+  import_fs.default.readdirSync(src).forEach((item) => {
+    const srcItemPath = import_path.default.join(src, item);
+    const destItemPath = import_path.default.join(dest, item);
+    if (import_fs.default.lstatSync(srcItemPath).isDirectory()) {
+      if (!import_fs.default.existsSync(destItemPath)) {
+        import_fs.default.mkdirSync(destItemPath, { recursive: true });
+        console.log(`Directory created: ${destItemPath}`);
+      }
+      copyDirectory(srcItemPath, destItemPath);
+    } else {
+      import_fs.default.copyFileSync(srcItemPath, destItemPath);
+      console.log(`File copied: ${srcItemPath} to ${destItemPath}`);
+    }
+  });
 };
 var installModule = (moduleName2) => {
   console.log(moduleName2);
@@ -70,7 +108,7 @@ if (command)
       console.log("Command not found");
   }
 else {
-  (0, import_child_process.exec)("npm install websites-factory-core", { cwd: process.cwd() }, (error, stdout, stderr) => {
+  (0, import_child_process.exec)("npm install websites-factory", { cwd: process.cwd() }, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error during installation: ${error.message}`);
       return;
@@ -81,6 +119,7 @@ else {
     }
     const baseDir = process.cwd();
     createDirectories(baseDir);
+    copyModules(baseDir);
     copyConfigFile(baseDir);
     console.log(stdout);
     console.log("Installation of websites-factory-core completed.");

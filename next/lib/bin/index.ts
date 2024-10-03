@@ -21,13 +21,12 @@ const createDirectories = (baseDir: string) => {
 };
 const copyConfigFile = (baseDir: string) => {
     const configFileName = 'websites-factory-config.json';
-    const sourcePath = path.join(__dirname, configFileName);
     const destPath = path.join(baseDir, configFileName);
+    const sourceFilePath = path.join(baseDir, 'node_modules', 'websites-factory', 'dist', 'websites-factory-config.json');
 
     if (!fs.existsSync(destPath)) {
         try {
-            fs.copyFileSync(sourcePath, destPath);
-            console.log(`Config file copied: ${configFileName}`);
+            fs.copyFileSync(sourceFilePath, destPath);
         } catch (error) {
             console.error(`Error copying config file: ${error}`);
         }
@@ -35,10 +34,45 @@ const copyConfigFile = (baseDir: string) => {
         console.log(`Config file already exists: ${configFileName}`);
     }
 };
+const copyModules = (baseDir: string) => {
+    const sourceDir = path.join(baseDir, 'node_modules', 'websites-factory', 'dist', 'modules');
+    const destDir = path.join(baseDir, 'websites-factory-modules');
 
+    if (fs.existsSync(sourceDir)) {
+        fs.readdirSync(sourceDir).forEach(item => {
+            const srcItemPath = path.join(sourceDir, item);
+            const destItemPath = path.join(destDir, item);
+
+            if (fs.lstatSync(srcItemPath).isDirectory()) {
+                if (!fs.existsSync(destItemPath)) {
+                    fs.mkdirSync(destItemPath, { recursive: true });
+                }
+                copyDirectory(srcItemPath, destItemPath);
+            } else {
+                fs.copyFileSync(srcItemPath, destItemPath);
+            }
+        });
+    } else {
+        console.error(`Source directory does not exist: ${sourceDir}`);
+    }
+};
+const copyDirectory = (src: string, dest: string) => {
+    fs.readdirSync(src).forEach(item => {
+        const srcItemPath = path.join(src, item);
+        const destItemPath = path.join(dest, item);
+
+        if (fs.lstatSync(srcItemPath).isDirectory()) {
+            if (!fs.existsSync(destItemPath)) {
+                fs.mkdirSync(destItemPath, { recursive: true });
+            }
+            copyDirectory(srcItemPath, destItemPath);
+        } else {
+            fs.copyFileSync(srcItemPath, destItemPath);
+        }
+    });
+};
 const installModule = (moduleName: string) => {
     console.log(moduleName);
-
 }
 
 if (command)
@@ -49,7 +83,7 @@ if (command)
 
     }
 else {
-    exec('npm install websites-factory-core', { cwd: process.cwd() }, (error, stdout, stderr) => {
+    exec('npm install websites-factory', { cwd: process.cwd() }, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error during installation: ${error.message}`);
             return;
@@ -60,8 +94,8 @@ else {
         }
         const baseDir = process.cwd();
         createDirectories(baseDir);
+        copyModules(baseDir);
         copyConfigFile(baseDir);
-        console.log(stdout);
         console.log('Installation of websites-factory-core completed.');
     });
 }

@@ -17,7 +17,7 @@ npx install websites-factory
 
 This command creates a `websites-factory-modules` directory, which will be used to store the modules and the `websites-factory-config.json` file. It will also install the Websites Factory library in `node_modules`.
 
-- **Tailwind**
+### Tailwind
 
 Add the path for all modules in `tailwind.config.js`
 
@@ -31,6 +31,26 @@ Add the path for all modules in `tailwind.config.js`
   ],
 ```
 
+### page.js / page.tsx
+
+Replace the code in the page.js or page.tsx file created by Next.js:
+
+```js
+import { notFound } from "next/navigation";
+import { getPage, PageRenderer } from "websites-factory";
+
+const page = async ({ params }) => {
+  const pageResult = await getPage(params);
+  if (!pageResult) {
+    notFound();
+  }
+  return (
+    <PageRenderer pageResult={pageResult} />
+  );
+};
+
+export default page;
+```
 
 > **Note**: The websites-factory-config file in this form is temporary. The idea is to eventually retrieve the configuration from a database. In that case, this will likely be used as the default configuration.
 

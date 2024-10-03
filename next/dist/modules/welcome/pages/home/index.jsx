@@ -1,13 +1,14 @@
 
-const index = ({ children }) => {
+const Home = ({ children }) => {
     return (
         <>
-            <div>
-                <h1 className="text-3xl font-bold underline">Welcome to the Websites Factory !</h1>
-                {children}
+            <div className="bg-white py-24 sm:py-32">
+                <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                    {children}
+                </div>
             </div>
         </>
     );
 };
 
-export default index; 
+export default Home; 
