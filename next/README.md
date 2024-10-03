@@ -19,14 +19,15 @@ This command creates a `websites-factory-modules` directory, which will be used 
 
 - **Tailwind**
 
-Ajoutez le lien pour tous les modules dans `tailwind.config.js`
+Add the path for all modules in `tailwind.config.js`
 
 ```js
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
- +   "./websites-factory-modules/**/*.{js,ts,jsx,tsx,mdx}",
+    // Add the path for all websites-factory-modules
+   "./websites-factory-modules/**/*.{js,ts,jsx,tsx,mdx}",
   ],
 ```
 
