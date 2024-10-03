@@ -93,6 +93,6 @@ else {
     createDirectories(baseDir);
     copyModules(baseDir);
     copyConfigFile(baseDir);
-    console.log("Installation of websites-factory-core completed.");
+    console.log("Installation of websites-factory completed.");
   });
 }
