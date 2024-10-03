@@ -27,7 +27,6 @@ var copyConfigFile = (baseDir) => {
   if (!fs.existsSync(destPath)) {
     try {
       fs.copyFileSync(sourceFilePath, destPath);
-      console.log(`Config file copied: ${configFileName}`);
     } catch (error) {
       console.error(`Error copying config file: ${error}`);
     }
@@ -45,12 +44,10 @@ var copyModules = (baseDir) => {
       if (fs.lstatSync(srcItemPath).isDirectory()) {
         if (!fs.existsSync(destItemPath)) {
           fs.mkdirSync(destItemPath, { recursive: true });
-          console.log(`Directory created: ${destItemPath}`);
         }
         copyDirectory(srcItemPath, destItemPath);
       } else {
         fs.copyFileSync(srcItemPath, destItemPath);
-        console.log(`File copied: ${srcItemPath} to ${destItemPath}`);
       }
     });
   } else {
@@ -64,12 +61,10 @@ var copyDirectory = (src, dest) => {
     if (fs.lstatSync(srcItemPath).isDirectory()) {
       if (!fs.existsSync(destItemPath)) {
         fs.mkdirSync(destItemPath, { recursive: true });
-        console.log(`Directory created: ${destItemPath}`);
       }
       copyDirectory(srcItemPath, destItemPath);
     } else {
       fs.copyFileSync(srcItemPath, destItemPath);
-      console.log(`File copied: ${srcItemPath} to ${destItemPath}`);
     }
   });
 };
@@ -98,7 +93,6 @@ else {
     createDirectories(baseDir);
     copyModules(baseDir);
     copyConfigFile(baseDir);
-    console.log(stdout);
     console.log("Installation of websites-factory-core completed.");
   });
 }

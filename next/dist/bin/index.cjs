@@ -50,7 +50,6 @@ var copyConfigFile = (baseDir) => {
   if (!import_fs.default.existsSync(destPath)) {
     try {
       import_fs.default.copyFileSync(sourceFilePath, destPath);
-      console.log(`Config file copied: ${configFileName}`);
     } catch (error) {
       console.error(`Error copying config file: ${error}`);
     }
@@ -68,12 +67,10 @@ var copyModules = (baseDir) => {
       if (import_fs.default.lstatSync(srcItemPath).isDirectory()) {
         if (!import_fs.default.existsSync(destItemPath)) {
           import_fs.default.mkdirSync(destItemPath, { recursive: true });
-          console.log(`Directory created: ${destItemPath}`);
         }
         copyDirectory(srcItemPath, destItemPath);
       } else {
         import_fs.default.copyFileSync(srcItemPath, destItemPath);
-        console.log(`File copied: ${srcItemPath} to ${destItemPath}`);
       }
     });
   } else {
@@ -87,12 +84,10 @@ var copyDirectory = (src, dest) => {
     if (import_fs.default.lstatSync(srcItemPath).isDirectory()) {
       if (!import_fs.default.existsSync(destItemPath)) {
         import_fs.default.mkdirSync(destItemPath, { recursive: true });
-        console.log(`Directory created: ${destItemPath}`);
       }
       copyDirectory(srcItemPath, destItemPath);
     } else {
       import_fs.default.copyFileSync(srcItemPath, destItemPath);
-      console.log(`File copied: ${srcItemPath} to ${destItemPath}`);
     }
   });
 };
@@ -121,7 +116,6 @@ else {
     createDirectories(baseDir);
     copyModules(baseDir);
     copyConfigFile(baseDir);
-    console.log(stdout);
     console.log("Installation of websites-factory-core completed.");
   });
 }
