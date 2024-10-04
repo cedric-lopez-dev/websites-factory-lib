@@ -42,8 +42,7 @@ Add the path for all modules in `tailwind.config.js`
 
 Replace the code in the page.js or page.tsx file created by Next.js:
 
-
-```bash tabs='js|ts'
+```js
 import { notFound } from "next/navigation";
 import { getPage, PageRenderer } from "websites-factory";
 
