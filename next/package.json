@@ -1,6 +1,6 @@
 {
   "name": "websites-factory",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -31,6 +31,7 @@
     "fs-extra": "^11.2.0"
   },
   "author": "Cedric Lopez",
+  "email": "66cedric.lopez@gmail.com",
   "license": "MIT",
   "keywords": [
     "nextjs",

@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 const copyModules = async () => {
-    const sourceDir = 'modules';
+    const sourceDir = 'websites-factory-modules';
     const destDir = path.join(__dirname, 'dist', 'modules');
 
     try {

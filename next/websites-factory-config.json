@@ -16,7 +16,7 @@
             "sections": [
                 {
                     "module": "welcome",
-                    "name": "presentation"
+                    "name": "introduction"
                 }
             ],
             "layout": {

@@ -3,6 +3,13 @@ Welcome to the **Websites Factory library** (beta).
 
 This library aims to generate pages in [Next.js](https://nextjs.org) from your modules or modules created by the community.
 
+## Table of Contents
+- [Getting Started](#getting-started)
+- [Overview](#overview)
+- [Configuration](#configuration)
+- [Pages](#pages)
+- [Modules](#modules)
+
 # Getting Started
 
 ## Requirements

@@ -1,7 +1,7 @@
 // core/importComponent.ts
 var importComponent = async (pathComponent) => {
   try {
-    const ComponentModule = await import(`/modules/${pathComponent}`);
+    const ComponentModule = await import(`/websites-factory-modules/${pathComponent}`);
     return ComponentModule.default;
   } catch (error) {
     return null;
