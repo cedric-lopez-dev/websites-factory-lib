@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 const page = async ({ params }: { params: { slug: string } }): Promise<JSX.Element> => {
     const pageResult = await getPage(params);
+
     if (!pageResult) {
         notFound();
     }

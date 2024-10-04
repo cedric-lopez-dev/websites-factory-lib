@@ -37,7 +37,8 @@
     "lib/bin/install.js",
     "lib/index.js",
     "core/functions.ts.test",
-    "lib/bin/index.ts"
+    "lib/bin/index.ts",
+    "websites-factory-modules/helloWorld/pages/hello/index.jsx"
   ],
   "exclude": [
     "node_modules"

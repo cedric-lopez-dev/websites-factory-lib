@@ -5,7 +5,7 @@
             "enabled": true
         },
         {
-            "name": "website",
+            "name": "helloWorld",
             "enabled": true
         }
     ],
@@ -29,6 +29,14 @@
             "metadata": {
                 "title": "{{websitesFactory.name}} | Welcome!",
                 "description": "Ceci est la page d'accueil d'exemple de {{websitesFactory.name}}"
+            }
+        },
+        "hello-world": {
+            "module": "helloWorld",
+            "page": "hello",
+            "layout": {
+                "module": "welcome",
+                "name": "main"
             }
         }
     },

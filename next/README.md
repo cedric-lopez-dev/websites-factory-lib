@@ -14,7 +14,7 @@ This library aims to generate pages in [Next.js](https://nextjs.org) from your m
 
 ## Requirements
 
-Website Factory is designed to be used with [Next.js](https://nextjs.org) and [Tailwind](https://tailwindui.com).
+Website Factory is designed to be used with [Next.js](https://nextjs.org) (App Router) and [Tailwind](https://tailwindui.com).
 
 ## Installation
 
@@ -42,6 +42,13 @@ Add the path for all modules in `tailwind.config.js`
 
 Replace the code in the page.js or page.tsx file created by Next.js:
 
+<div>
+  <button onclick="showTab('js')">JavaScript</button>
+  <button onclick="showTab('ts')">TypeScript</button>
+</div>
+
+<div id="js" class="tab-content" style="display: block;">
+
 ```js
 import { notFound } from "next/navigation";
 import { getPage, PageRenderer } from "websites-factory";
@@ -58,6 +65,7 @@ const page = async ({ params }) => {
 
 export default page;
 ```
+</div>
 
 > **Note**: The websites-factory-config file in this form is temporary. The idea is to eventually retrieve the configuration from a database. In that case, this will likely be used as the default configuration.
 
@@ -99,9 +107,29 @@ To `generate a page`, you must at least specify which page from which module you
 ```
 
 - **Layout**
-*Coming soon*
+
+The page can use a layout provided by one of the installed modules.
+
+```json
+
+      "layout": {
+          "module": "welcome",
+          "name": "main"
+            },
+            
+```
+
 - **Sections**
-*Coming soon*
+The page will display the sections provided by the various modules.
+```json
+      "sections": [
+          {
+              "module": "welcome",
+              "name": "introduction"
+          }
+        ],
+
+```
 - **Entities**
 *Coming soon*
 - **Metadatada**

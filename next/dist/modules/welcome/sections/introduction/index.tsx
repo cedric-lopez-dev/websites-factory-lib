@@ -1,6 +1,6 @@
 
 
-const Presentation = () => {
+const Introduction = () => {
 
     return (
         <>
@@ -16,4 +16,4 @@ const Presentation = () => {
     );
 };
 
-export default Presentation;
+export default Introduction;
