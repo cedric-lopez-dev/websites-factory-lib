@@ -42,12 +42,6 @@ Add the path for all modules in `tailwind.config.js`
 
 Replace the code in the page.js or page.tsx file created by Next.js:
 
-<div>
-  <button onclick="showTab('js')">JavaScript</button>
-  <button onclick="showTab('ts')">TypeScript</button>
-</div>
-
-<div id="js" class="tab-content" style="display: block;">
 
 ```js
 import { notFound } from "next/navigation";
@@ -65,7 +59,6 @@ const page = async ({ params }) => {
 
 export default page;
 ```
-</div>
 
 > **Note**: The websites-factory-config file in this form is temporary. The idea is to eventually retrieve the configuration from a database. In that case, this will likely be used as the default configuration.
 
