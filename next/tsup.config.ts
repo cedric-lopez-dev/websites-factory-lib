@@ -14,13 +14,12 @@ const copyModules = async () => {
     }
 };
 
-const copyConfig = async () => {
-    const configFileName = 'websites-factory-config.json';
-    const sourceFile = path.join(__dirname, configFileName);
+const copyFile = async (fileName: string) => {
+    const sourceFile = path.join(__dirname, fileName);
     const destDir = path.join(__dirname, 'dist');
     try {
-        await fs.copyFile(sourceFile, path.join(destDir, configFileName));
-        console.log(`File ${configFileName} copied to ${destDir}`);
+        await fs.copyFile(sourceFile, path.join(destDir, fileName));
+        console.log(`File ${fileName} copied to ${destDir}`);
     } catch (err) {
         console.error(`Error during copy: ${err}`);
     }
@@ -28,7 +27,8 @@ const copyConfig = async () => {
 
 const copy = async () => {
     copyModules()
-    copyConfig()
+    copyFile('websites-factory-config.json')
+    copyFile('entities.json')
 }
 
 export default defineConfig([

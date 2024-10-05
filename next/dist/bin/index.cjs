@@ -43,10 +43,9 @@ var createDirectories = (baseDir) => {
     }
   });
 };
-var copyConfigFile = (baseDir) => {
-  const configFileName = "websites-factory-config.json";
-  const destPath = import_path.default.join(baseDir, configFileName);
-  const sourceFilePath = import_path.default.join(baseDir, "node_modules", "websites-factory", "dist", "websites-factory-config.json");
+var copyFile = (baseDir, fileName) => {
+  const destPath = import_path.default.join(baseDir, fileName);
+  const sourceFilePath = import_path.default.join(baseDir, "node_modules", "websites-factory", "dist", fileName);
   if (!import_fs.default.existsSync(destPath)) {
     try {
       import_fs.default.copyFileSync(sourceFilePath, destPath);
@@ -54,7 +53,7 @@ var copyConfigFile = (baseDir) => {
       console.error(`Error copying config file: ${error}`);
     }
   } else {
-    console.log(`Config file already exists: ${configFileName}`);
+    console.log(`Config file already exists: ${fileName}`);
   }
 };
 var copyModules = (baseDir) => {
@@ -115,7 +114,8 @@ else {
     const baseDir = process.cwd();
     createDirectories(baseDir);
     copyModules(baseDir);
-    copyConfigFile(baseDir);
+    copyFile(baseDir, "websites-factory-config.json");
+    copyFile(baseDir, "entities.json");
     console.log("Installation of websites-factory completed.");
   });
 }

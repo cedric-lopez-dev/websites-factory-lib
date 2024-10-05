@@ -7,7 +7,7 @@ import { getJson } from "./getJson";
 
 
 type Params = {
-    [path: string]: string
+    [path: string]: string[]
 }
 
 export const getPage = async (params?: Params): Promise<PageResult | null> => {
@@ -30,18 +30,23 @@ export const getPage = async (params?: Params): Promise<PageResult | null> => {
 
 const getPageTemplate = (template: Template, params: Params | undefined): Page | undefined => {
     let pageTemplate: Page | undefined = template['/'];
-    if (params && Object.keys(params).length > 0) {
-        const slugs = Object.keys(params).map(key => params[key]);
+    let slugs: string[];
 
-        pageTemplate = template[slugs[0]];
 
-        slugs.slice(1).forEach(slug => {
-            if (pageTemplate && pageTemplate.subPage) {
-                pageTemplate = pageTemplate.subPage[slug];
-            } else {
-                pageTemplate = undefined;
-            }
-        });
+    if (params?.slug) {
+        slugs = params.slug;
+        if (slugs.length > 0) {
+            pageTemplate = template[slugs[0]];
+            slugs.slice(1).forEach(slug => {
+                if (pageTemplate && pageTemplate.subPage) {
+                    console.log(pageTemplate.subPage[slug]);
+                    pageTemplate = pageTemplate.subPage[slug];
+                } else {
+                    pageTemplate = undefined;
+                }
+            });
+        }
+
     }
     return pageTemplate;
 };

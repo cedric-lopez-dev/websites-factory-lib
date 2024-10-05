@@ -100,34 +100,120 @@ To `generate a page`, you must at least specify which page from which module you
 
 - **Layout**
 
-The page can use a layout provided by one of the installed modules.
+The page can use a `layout` provided by one of the installed modules.
 
 ```json
 
       "layout": {
           "module": "welcome",
           "name": "main"
-            },
+            }
             
 ```
 
-- **Sections**
-The page will display the sections provided by the various modules.
+- **Sections**  
+The page will display the `sections` provided by the various modules.
 ```json
       "sections": [
           {
-              "module": "welcome",
-              "name": "introduction"
+            "module": "welcome",
+            "name": "introduction"
           }
-        ],
+        ]
 
 ```
 - **Entities**
-*Coming soon*
+
+Defines the `entities` that will be available on the page.
+```json
+      "entities": [
+        "websitesFactory"
+      ]
+```
+
 - **Metadatada**
-*Coming soon*
+
+Creation of metadata. The different texts accept variables in the format {{variable}}. The variables are filled in from the entities available on the page.
+
+```json
+      "metadata": {
+          "title": "{{websitesFactory.name}} | Welcome!",
+          "description": "This is the example homepage of {{websitesFactory.name}}"
+        }
+```
+
 - **SubPage**
-*Coming soon*
+The `subPage` key allows nesting a subpage within a page. A subpage functions like a top-level page, with its key being the path of the subpage.
+You can nest as many `subPage` as you like
+
+> **Note**: Note: the entry point "/" corresponds to the site's index page. It does not accept any subPages. The subpages of the index page are the other keys of type entrypoints.
+
+```json
+    "template": {
+        "/": {
+            "module": "welcome",
+            "page": "home",
+        },
+        "hello-world": {
+            "module": "helloWorld",
+            "page": "hello",
+            "subPage": {
+                "subPage-exemple": {
+                    "module": "welcome",
+                    "page": "home",
+                }
+            }
+        }
+    }
+```
+
+- **Full template exemple**
+
+```json
+    "template": {
+        "/": {
+            "module": "welcome",
+            "page": "home",
+            "sections": [
+                {
+                    "module": "welcome",
+                    "name": "introduction"
+                }
+            ],
+            "layout": {
+                "module": "welcome",
+                "name": "main"
+            },
+            "entities": [
+                "websitesFactory"
+            ],
+            "metadata": {
+                "title": "{{websitesFactory.name}} | Welcome!",
+                "description": "This is the example homepage of {{websitesFactory.name}}"
+            }
+        },
+        "hello-world": {
+            "module": "helloWorld",
+            "page": "hello",
+            "layout": {
+                "module": "welcome",
+                "name": "main"
+            },
+            "subPage": {
+                "subPage-exemple": {
+                    "module": "welcome",
+                    "page": "home",
+                    "sections": [
+                        {
+                            "module": "welcome",
+                            "name": "introduction"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+```
 
 # Pages
 
