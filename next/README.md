@@ -214,6 +214,8 @@ You can nest as many `subPage` as you like
         }
     }
 ```
+## Entities  
+*Coming soon*
 
 # Pages
 
