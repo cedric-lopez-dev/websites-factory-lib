@@ -253,14 +253,38 @@ const page = async ({ params }) => {
 };
 export default page;
 ```
-- **getPage**
+### getPage
 
 `getPage` returns the elements of a page using the `websites-factory-config`. The function takes the `params` object from [Next.js](https://nextjs.org) as a parameter.
 
-- **PageRenderer**
+If you want to customize the rendering of your page, you can use the elements returned by getPage :
+`PageComponent`, `pageSectionsComponents`, `PageLayoutComponent`
+```js
+  const { PageComponent, pageSectionsComponents, PageLayoutComponent } = pageResult
+
+      return (
+        <PageLayoutComponent>
+
+          <PageComponent>
+            {
+              pageSectionsComponents.map((Section, i) => {
+                if (Section)
+                  return <  Section key={i} />
+              })
+            }
+          </PageComponent>
+        </PageLayoutComponent>  
+    );
+```
+### PageRenderer
 
 `PageRenderer` returns the complete JSX template required by **Websites Factory**. It requires the result of `getPage` as props.
 
+```js
+  return (
+    <PageRenderer pageResult={pageResult} />
+  );
+```
 ### Metadada Rendering
 
 **Websites Factory** uses the `generateMetadata` function and the `params` object from [Next.js](https://nextjs.org).
@@ -276,10 +300,27 @@ export async function generateMetadata({ params }){
     return populatedMetadata
 }
 ```
+
+You can also retrieve the page metadata directly from the result of `getPage`:
+```js
+  const { pageMetadata } = pageResult
+```
+
 - **populateMetadata**
 
 `populateMetadata` returns the metadata object populated using `websites-factory-config`. It takes as a parameter the result of the `getPage` function.
 
+### pageEntities
+
+The getPage function also returns entities as instances.
+
+> (Beta)
+**Note**: Note: This feature is still in development. Currently, an entity instance is composed of the entity name and the findOne function. The idea is that modules will use the mapping in their configuration to match their attributes with those of the page's entities.
+FindOne retrieves the corresponding entity from `entities.json`
+
+```js
+  const { pageEntities } = pageResult
+  ```
 # Modules
 
 Modules should be placed in the `websites-factory-modules` folder.

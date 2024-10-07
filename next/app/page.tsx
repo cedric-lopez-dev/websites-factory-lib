@@ -15,6 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home(): Promise<ReactElement> {
 
   const pageResult = await getPage()
+  console.log(pageResult);
+
   if (!pageResult) {
     notFound();
   }
