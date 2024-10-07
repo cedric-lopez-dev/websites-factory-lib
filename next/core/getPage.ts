@@ -32,14 +32,12 @@ const getPageTemplate = (template: Template, params: Params | undefined): Page |
     let pageTemplate: Page | undefined = template['/'];
     let slugs: string[];
 
-
     if (params?.slug) {
         slugs = params.slug;
         if (slugs.length > 0) {
             pageTemplate = template[slugs[0]];
             slugs.slice(1).forEach(slug => {
                 if (pageTemplate && pageTemplate.subPage) {
-                    console.log(pageTemplate.subPage[slug]);
                     pageTemplate = pageTemplate.subPage[slug];
                 } else {
                     pageTemplate = undefined;

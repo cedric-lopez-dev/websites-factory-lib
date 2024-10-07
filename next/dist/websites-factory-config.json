@@ -28,7 +28,7 @@
             ],
             "metadata": {
                 "title": "{{websitesFactory.name}} | Welcome!",
-                "description": "Ceci est la page d'accueil d'exemple de {{websitesFactory.name}}"
+                "description": "This is the example homepage of {{websitesFactory.name}}"
             }
         },
         "hello-world": {
@@ -37,6 +37,18 @@
             "layout": {
                 "module": "welcome",
                 "name": "main"
+            },
+            "subPage": {
+                "subPage-exemple": {
+                    "module": "welcome",
+                    "page": "home",
+                    "sections": [
+                        {
+                            "module": "welcome",
+                            "name": "introduction"
+                        }
+                    ]
+                }
             }
         }
     },

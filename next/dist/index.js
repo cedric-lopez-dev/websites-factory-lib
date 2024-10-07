@@ -104,16 +104,20 @@ var getPage = async (params) => {
 };
 var getPageTemplate = (template, params) => {
   let pageTemplate = template["/"];
-  if (params && Object.keys(params).length > 0) {
-    const slugs = Object.keys(params).map((key) => params[key]);
-    pageTemplate = template[slugs[0]];
-    slugs.slice(1).forEach((slug) => {
-      if (pageTemplate && pageTemplate.subPage) {
-        pageTemplate = pageTemplate.subPage[slug];
-      } else {
-        pageTemplate = void 0;
-      }
-    });
+  let slugs;
+  if (params == null ? void 0 : params.slug) {
+    slugs = params.slug;
+    if (slugs.length > 0) {
+      pageTemplate = template[slugs[0]];
+      slugs.slice(1).forEach((slug) => {
+        if (pageTemplate && pageTemplate.subPage) {
+          console.log(pageTemplate.subPage[slug]);
+          pageTemplate = pageTemplate.subPage[slug];
+        } else {
+          pageTemplate = void 0;
+        }
+      });
+    }
   }
   return pageTemplate;
 };

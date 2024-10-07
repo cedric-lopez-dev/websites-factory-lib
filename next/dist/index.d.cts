@@ -19,7 +19,7 @@ interface PageResult {
 }
 
 type Params = {
-    [path: string]: string;
+    [path: string]: string[];
 };
 declare const getPage: (params?: Params) => Promise<PageResult | null>;
 

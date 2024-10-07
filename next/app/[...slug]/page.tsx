@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string[] } }): Promise<Metadata> {
     const pageResult = await getPage(params)
     if (!pageResult) {
         notFound();
@@ -12,7 +12,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return populatedMetadata
 }
 
-const page = async ({ params }: { params: { slug: string } }): Promise<JSX.Element> => {
+const page = async ({ params }: { params: { slug: string[] } }): Promise<JSX.Element> => {
+
     const pageResult = await getPage(params);
 
     if (!pageResult) {

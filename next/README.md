@@ -14,7 +14,7 @@ This library aims to generate pages in [Next.js](https://nextjs.org) from your m
 
 ## Requirements
 
-Website Factory is designed to be used with [Next.js](https://nextjs.org) (App Router) and [Tailwind](https://tailwindui.com).
+**Website Factory** is designed to be used with [Next.js](https://nextjs.org) (App Router) and [Tailwind](https://tailwindui.com).
 
 ## Installation
 
@@ -59,7 +59,8 @@ const page = async ({ params }) => {
 export default page;
 ```
 
-> **Note**: The websites-factory-config file in this form is temporary. The idea is to eventually retrieve the configuration from a database. In that case, this will likely be used as the default configuration.
+> (Beta)
+**Note**: The websites-factory-config file in this form is temporary. The idea is to eventually retrieve the configuration from a database. In that case, this will likely be used as the default configuration.
 
 # Overview
 
@@ -214,16 +215,70 @@ You can nest as many `subPage` as you like
         }
     }
 ```
-## Entities  
-*Coming soon*
+## Entities
+Lists the entities available for the App and their path.
+```json
+    "entities": {
+        "websitesFactory": "websitesFactory"
+    }
+```
+> (Beta)
+**Note**: For now, the entities are provided by the entities.json file. Later, they will be fetched via an API. The path will then be the one provided by the API.
 
 # Pages
 
-## Model
-*Coming soon*
+## Routing
 
-## Slug-Page
-*Coming soon*
+**Website Factory** uses the [Next.js](https://nextjs.org) App Router.
+
+### Slug-Page
+
+For dynamic routes, you need to create a `[...slug]` folder with a page template.
+
+## Page Rendering
+
+### Base Page Rendering
+```js
+import { notFound } from "next/navigation";
+import { getPage, PageRenderer } from "websites-factory";
+
+const page = async ({ params }) => {
+  const pageResult = await getPage(params);
+  if (!pageResult) {
+    notFound();
+  }
+  return (
+    <PageRenderer pageResult={pageResult} />
+  );
+};
+export default page;
+```
+- **getPage**
+
+`getPage` returns the elements of a page using the `websites-factory-config`. The function takes the `params` object from [Next.js](https://nextjs.org) as a parameter.
+
+- **PageRenderer**
+
+`PageRenderer` returns the complete JSX template required by **Websites Factory**. It requires the result of `getPage` as props.
+
+### Metadada Rendering
+
+**Websites Factory** uses the `generateMetadata` function and the `params` object from [Next.js](https://nextjs.org).
+
+```js
+import { populateMetadata } from 'websites-factory';
+export async function generateMetadata({ params }){
+    const pageResult = await getPage(params)
+    if (!pageResult) {
+        notFound();
+    }
+    const populatedMetadata = populateMetadata(pageResult)
+    return populatedMetadata
+}
+```
+- **populateMetadata**
+
+`populateMetadata` returns the metadata object populated using `websites-factory-config`. It takes as a parameter the result of the `getPage` function.
 
 # Modules
 
