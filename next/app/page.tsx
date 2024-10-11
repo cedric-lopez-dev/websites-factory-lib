@@ -2,7 +2,6 @@ import { getPage, populateMetadata } from "websites-factory";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ReactElement } from "react";
-import { Button } from "websites-factory/ui"
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageResult = await getPage()
