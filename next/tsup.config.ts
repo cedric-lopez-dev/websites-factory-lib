@@ -3,8 +3,8 @@ import fs from 'fs-extra';
 import path from 'path';
 
 const copyModules = async () => {
-    const sourceDir = 'websites-factory-modules';
-    const destDir = path.join(__dirname, 'dist', 'modules');
+    const sourceDir = 'websites-factory';
+    const destDir = path.join(__dirname, 'build', 'export');
 
     try {
         await fs.copy(sourceDir, destDir);
@@ -14,9 +14,9 @@ const copyModules = async () => {
     }
 };
 
-const copyFile = async (fileName: string) => {
-    const sourceFile = path.join(__dirname, fileName);
-    const destDir = path.join(__dirname, 'dist');
+const copyFile = async (fileName: string, pathFolder: string, folder: string) => {
+    const sourceFile = path.join(__dirname, pathFolder, fileName);
+    const destDir = path.join(__dirname, 'build', folder);
     try {
         await fs.copyFile(sourceFile, path.join(destDir, fileName));
         console.log(`File ${fileName} copied to ${destDir}`);
@@ -26,16 +26,18 @@ const copyFile = async (fileName: string) => {
 }
 
 const copy = async () => {
-    copyModules()
-    copyFile('websites-factory-config.json')
-    copyFile('entities.json')
+    await copyModules()
+    copyFile('websites-factory-config.json', 'websites-factory', 'export')
+    copyFile('entities.json', 'websites-factory', 'export')
+    copyFile('README.md', '', '')
+    copyFile('package.json', '', '')
 }
 
 export default defineConfig([
     {
         entry: ['lib/index.ts'],
-        format: ['cjs', 'esm'],
-        outDir: 'dist',
+        format: ['esm'],
+        outDir: 'build',
         dts: true,
         shims: true,
         clean: true,
@@ -43,9 +45,16 @@ export default defineConfig([
     },
     {
         entry: ['lib/bin/index.ts'],
-        format: ['cjs', 'esm'],
-        outDir: 'dist/bin',
+        format: ['esm'],
+        outDir: 'build/bin',
         dts: false,
         clean: false,
+    },
+    {
+        entry: ['lib/ui.ts'],
+        format: ['esm'],
+        outDir: 'build',
+        dts: false,
+        clean: true,
     },
 ]);

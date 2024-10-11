@@ -7,7 +7,7 @@ const moduleName = process.argv[3]
 
 const createDirectories = (baseDir: string) => {
     const directoriesToCreate = [
-        '/websites-factory-modules',
+        '/websites-factory',
     ];
     directoriesToCreate.forEach(dir => {
         const dirPath = path.join(baseDir, dir);
@@ -21,7 +21,7 @@ const createDirectories = (baseDir: string) => {
 };
 const copyFile = (baseDir: string, fileName: string) => {
     const destPath = path.join(baseDir, fileName);
-    const sourceFilePath = path.join(baseDir, 'node_modules', 'websites-factory', 'dist', fileName);
+    const sourceFilePath = path.join(baseDir, 'node_modules', 'websites-factory', 'export', fileName);
 
     if (!fs.existsSync(destPath)) {
         try {
@@ -33,9 +33,9 @@ const copyFile = (baseDir: string, fileName: string) => {
         console.log(`Config file already exists: ${fileName}`);
     }
 };
-const copyModules = (baseDir: string) => {
-    const sourceDir = path.join(baseDir, 'node_modules', 'websites-factory', 'dist', 'modules');
-    const destDir = path.join(baseDir, 'websites-factory-modules');
+const copyFolder = (baseDir: string) => {
+    const sourceDir = path.join(baseDir, 'node_modules', 'websites-factory', 'export');
+    const destDir = path.join(baseDir, 'websites-factory');
 
     if (fs.existsSync(sourceDir)) {
         fs.readdirSync(sourceDir).forEach(item => {
@@ -93,9 +93,9 @@ else {
         }
         const baseDir = process.cwd();
         createDirectories(baseDir);
-        copyModules(baseDir);
-        copyFile(baseDir, 'websites-factory-config.json');
-        copyFile(baseDir, 'entities.json');
+        copyFolder(baseDir);
+        // copyFile(baseDir, 'websites-factory-config.json');
+        // copyFile(baseDir, 'entities.json');
         console.log('Installation of websites-factory completed.');
     });
 }

@@ -1,6 +1,6 @@
 {
   "name": "websites-factory",
-  "version": "0.3.6",
+  "version": "0.3.26",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -10,7 +10,7 @@
     "bundle": "tsup"
   },
   "bin": {
-    "websites-factory-core": "dist/bin/index.js"
+    "websites-factory": "/bin/index.js"
   },
   "peerDependencies": {
     "next": "^14.0.0",
@@ -41,7 +41,10 @@
   ],
   "main": "dist/index.js",
   "files": [
-    "dist",
-    "bin"
+    "bin",
+    "export",
+    "index.d.ts",
+    "index.js",
+    "ui.js"
   ]
 }

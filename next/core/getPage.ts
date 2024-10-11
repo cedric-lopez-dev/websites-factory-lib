@@ -11,7 +11,7 @@ type Params = {
 }
 
 export const getPage = async (params?: Params): Promise<PageResult | null> => {
-    const config = getJson("websites-factory-config.json") as Config | null;
+    const config = getJson("/websites-factory/websites-factory-config.json") as Config | null;
     if (!config)
         return null
     const pageTemplate = getPageTemplate(config.template, params)
