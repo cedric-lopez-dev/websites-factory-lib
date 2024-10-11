@@ -24,6 +24,8 @@ export const getPage = async (params?: Params): Promise<PageResult | null> => {
     const pageSectionsComponents = await getPageSectionsComponents(config, pageTemplate)
     const pageEntities = getPageEntities(pageTemplate) || null
     const pageMetadata = pageTemplate.metadata || null
+
+
     return { PageComponent, pageSectionsComponents, PageLayoutComponent, pageMetadata, pageEntities };
 };
 

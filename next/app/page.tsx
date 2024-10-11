@@ -1,7 +1,8 @@
-import { getPage, populateMetadata } from "@/lib";
+import { getPage, populateMetadata } from "websites-factory";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ReactElement } from "react";
+import { Button } from "websites-factory/ui"
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageResult = await getPage()
@@ -15,8 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home(): Promise<ReactElement> {
 
   const pageResult = await getPage()
-  console.log(pageResult);
-
   if (!pageResult) {
     notFound();
   }
@@ -27,7 +26,6 @@ export default async function Home(): Promise<ReactElement> {
     return (
       <>
         <PageLayoutComponent>
-
           <PageComponent>
             {
               pageSectionsComponents.map((Section, i) => {

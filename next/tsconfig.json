@@ -25,6 +25,12 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "websites-factory": [
+        "./lib/index"
+      ],
+      "websites-factory/*": [
+        "./lib/*"
       ]
     },
     "noEmit": true
@@ -38,7 +44,8 @@
     "lib/index.js",
     "core/functions.ts.test",
     "lib/bin/index.ts",
-    "websites-factory-modules/helloWorld/pages/hello/index.jsx"
+    "websites-factory-modules/helloWorld/pages/hello/index.jsx",
+    "core/ui/button.jsx"
   ],
   "exclude": [
     "node_modules"

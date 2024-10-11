@@ -1,0 +1,1 @@
+export { getThemeComponent } from "@/core/getThemeComponent"
