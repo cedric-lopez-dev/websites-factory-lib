@@ -1,6 +1,6 @@
 import { PageResult } from "./types";
 import React from "react";
-
+import { Providers } from '@/websites-factory/Providers'
 export const PageRenderer = ({ pageResult }: { pageResult: PageResult }) => {
     const {
         PageComponent,
@@ -10,13 +10,15 @@ export const PageRenderer = ({ pageResult }: { pageResult: PageResult }) => {
 
     if (PageLayoutComponent) {
         return (
-            <PageLayoutComponent>
-                <PageComponent>
-                    {pageSectionsComponents.map((Section, i) =>
-                        Section ? <Section key={i} /> : null
-                    )}
-                </PageComponent>
-            </PageLayoutComponent>
+            <Providers>
+                <PageLayoutComponent>
+                    <PageComponent>
+                        {pageSectionsComponents.map((Section, i) =>
+                            Section ? <Section key={i} /> : null
+                        )}
+                    </PageComponent>
+                </PageLayoutComponent>
+            </Providers>
         );
     }
 

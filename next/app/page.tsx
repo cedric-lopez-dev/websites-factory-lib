@@ -2,6 +2,7 @@ import { getPage, populateMetadata } from "websites-factory";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ReactElement } from "react";
+import { Providers } from '@/websites-factory/Providers'
 
 export async function generateMetadata(): Promise<Metadata> {
   const pageResult = await getPage()
@@ -19,19 +20,22 @@ export default async function Home(): Promise<ReactElement> {
     notFound();
   }
   const { PageComponent, pageSectionsComponents, PageLayoutComponent } = pageResult
+
   if (PageLayoutComponent)
     return (
       <>
-        <PageLayoutComponent>
-          <PageComponent>
-            {
-              pageSectionsComponents.map((Section, i) => {
-                if (Section)
-                  return <  Section key={i} />
-              })
-            }
-          </PageComponent>
-        </PageLayoutComponent>
+        <Providers>
+          <PageLayoutComponent>
+            <PageComponent>
+              {
+                pageSectionsComponents.map((Section, i) => {
+                  if (Section)
+                    return <  Section key={i} />
+                })
+              }
+            </PageComponent>
+          </PageLayoutComponent>
+        </Providers>
       </>
     );
 

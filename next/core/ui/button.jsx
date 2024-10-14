@@ -1,13 +1,9 @@
+'use client';
 
-import { getThemeComponent } from "../getThemeGroupUi";
-const componentUIGroup = 'button'
+import { getThemeComponent } from "../getThemeComponent";
 
-const ButtonRounded = ({ ...props }) => {
-    const ButtonRounded = getThemeComponent(componentUIGroup, "Button")
-    return <ButtonRounded {...props} />
+export const Button = ({ ...props }) => {
+    const Component = getThemeComponent('button', 'Button')
+    return <Component {...props}></Component>
 }
 
-const ButtonComponents = {
-    ButtonRounded,
-};
-export default ButtonComponents;
