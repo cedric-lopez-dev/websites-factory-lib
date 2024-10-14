@@ -1,6 +1,6 @@
 {
   "name": "websites-factory",
-  "version": "0.3.26",
+  "version": "0.3.31",
   "type": "module",
   "scripts": {
     "dev": "next dev",

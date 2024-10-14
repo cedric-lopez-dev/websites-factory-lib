@@ -4,6 +4,7 @@ import { getPageComponent, getPageLayoutComponent, getPageSectionsComponents } f
 import { createEntity } from "./createEntity";
 import { Config, EntityInstance, Page, PageResult, Template } from "./types";
 import { getJson } from "./getJson";
+import { getThemeGroupUi } from "./getThemeGroupUi";
 
 
 type Params = {
@@ -24,6 +25,7 @@ export const getPage = async (params?: Params): Promise<PageResult | null> => {
     const pageSectionsComponents = await getPageSectionsComponents(config, pageTemplate)
     const pageEntities = getPageEntities(pageTemplate) || null
     const pageMetadata = pageTemplate.metadata || null
+    // const ui = await getUi()
 
 
     return { PageComponent, pageSectionsComponents, PageLayoutComponent, pageMetadata, pageEntities };
@@ -63,3 +65,12 @@ const getPageEntities = (pageTemplate: Page): EntityInstance[] | null => {
     return entityInstances
 }
 
+// const getUi = async () => {
+//     const ButtonModule = await getThemeGroupUi("button");
+//     const { Button } = ButtonModule
+
+//     console.log(Button);
+
+//     return Button
+
+// }

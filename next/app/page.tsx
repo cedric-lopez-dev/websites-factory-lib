@@ -19,8 +19,6 @@ export default async function Home(): Promise<ReactElement> {
     notFound();
   }
   const { PageComponent, pageSectionsComponents, PageLayoutComponent } = pageResult
-
-
   if (PageLayoutComponent)
     return (
       <>

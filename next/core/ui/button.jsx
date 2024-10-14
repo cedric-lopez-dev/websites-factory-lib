@@ -1,10 +1,13 @@
-import { getThemeComponent } from "../getThemeComponent";
-import React from "react";
 
-
+import { getThemeComponent } from "../getThemeGroupUi";
 const componentUIGroup = 'button'
 
-export const Button = ({ ...props }) => {
-    const Button = getThemeComponent(componentUIGroup, "Button");
-    return <Button {...props} />
+const ButtonRounded = ({ ...props }) => {
+    const ButtonRounded = getThemeComponent(componentUIGroup, "Button")
+    return <ButtonRounded {...props} />
 }
+
+const ButtonComponents = {
+    ButtonRounded,
+};
+export default ButtonComponents;

@@ -9,6 +9,7 @@ This library aims to generate pages in [Next.js](https://nextjs.org) from your m
 - [Configuration](#configuration)
 - [Pages](#pages)
 - [Modules](#modules)
+- [Themes](#themes)
 
 # Getting Started
 
@@ -22,7 +23,7 @@ This library aims to generate pages in [Next.js](https://nextjs.org) from your m
 npx websites-factory
 ```
 
-This command creates a `websites-factory-modules` directory, which will be used to store the modules and the `websites-factory-config.json` file. It will also install the Websites Factory library in `node_modules`.
+This command creates a `websites-factory` directory, which will be used to store the modules, themes and the `websites-factory-config.json` file. It will also install the Websites Factory library in `node_modules`.
 
 ### Tailwind
 
@@ -33,8 +34,8 @@ Add the path for all modules in `tailwind.config.js`
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    // Add the path for all websites-factory-modules
-   "./websites-factory-modules/**/*.{js,ts,jsx,tsx,mdx}",
+    // Add the path for all websites-factory
+   "./websites-factory/**/*.{js,ts,jsx,tsx,mdx}",
   ],
 ```
 
@@ -225,6 +226,7 @@ Lists the entities available for the App and their path.
 > (Beta)
 **Note**: For now, the entities are provided by the entities.json file. Later, they will be fetched via an API. The path will then be the one provided by the API.
 
+
 # Pages
 
 ## Routing
@@ -253,9 +255,13 @@ const page = async ({ params }) => {
 };
 export default page;
 ```
+
 ### getPage
 
 `getPage` returns the elements of a page using the `websites-factory-config`. The function takes the `params` object from [Next.js](https://nextjs.org) as a parameter.
+
+**Note**: For the sake of clarity, it was decided to use the same template for the root page and for all other pages. In reality, for the root page, `params` are not necessary to build it.
+⚠️ In the absence of `params`, the "/" template will always be generated.
 
 If you want to customize the rendering of your page, you can use the elements returned by getPage :
 `PageComponent`, `pageSectionsComponents`, `PageLayoutComponent`
@@ -323,18 +329,24 @@ FindOne retrieves the corresponding entity from `entities.json`
   ```
 # Modules
 
-Modules should be placed in the `websites-factory-modules` folder.
+Modules should be placed in the `websites-factory` folder.
 The pages provided by the module should be placed in a `pages` folder and a folder named after the page.
 The sections provided by the module should be placed in a `sections` folder and a folder named after the section.
 
 ```
-└──websites-factory-modules
+└──modules
     ├── welcome
     │   ├── pages
     │   │   ├── home  
     │   │   │  └── index.tsx  
     │   ├── sections  
     │   │   ├── introduction
-    │   │   │   └── index.tsx  
+    │   │   │   └── index.tsx
+    │   ├── layout  
+    │   │   ├── main
+    │   │   │   └── index.tsx        
 ```
 
+# Themes
+
+*coming soon*
