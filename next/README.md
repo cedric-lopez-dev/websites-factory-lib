@@ -321,7 +321,7 @@ You can also retrieve the page metadata directly from the result of `getPage`:
 The getPage function also returns entities as instances.
 
 > (Beta)
-**Note**: Note: This feature is still in development. Currently, an entity instance is composed of the entity name and the findOne function. The idea is that modules will use the mapping in their configuration to match their attributes with those of the page's entities.
+**Note**: This feature is still in development. Currently, an entity instance is composed of the entity name and the findOne function. The idea is that modules will use the mapping in their configuration to match their attributes with those of the page's entities.
 FindOne retrieves the corresponding entity from `entities.json`
 
 ```js
