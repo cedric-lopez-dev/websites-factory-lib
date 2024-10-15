@@ -148,7 +148,7 @@ Creation of metadata. The different texts accept variables in the format {{varia
 The `subPage` key allows nesting a subpage within a page. A subpage functions like a top-level page, with its key being the path of the subpage.
 You can nest as many `subPage` as you like
 
-> **Note**: Note: the entry point "/" corresponds to the site's index page. It does not accept any subPages. The subpages of the index page are the other keys of type entrypoints.
+> **Note**: the entry point "/" corresponds to the site's index page. It does not accept any subPages. The subpages of the index page are the other keys of type entrypoints.
 
 ```json
     "template": {
@@ -260,7 +260,7 @@ export default page;
 
 `getPage` returns the elements of a page using the `websites-factory-config`. The function takes the `params` object from [Next.js](https://nextjs.org) as a parameter.
 
-**Note**: For the sake of clarity, it was decided to use the same template for the root page and for all other pages. In reality, for the root page, `params` are not necessary to build it.
+> **Note**: For the sake of clarity, it was decided to use the same template for the root page and for all other pages. In reality, for the root page, `params` are not necessary to build it.
 ⚠️ In the absence of `params`, the "/" template will always be generated.
 
 If you want to customize the rendering of your page, you can use the elements returned by getPage :
