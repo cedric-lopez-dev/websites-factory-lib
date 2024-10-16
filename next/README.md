@@ -1,3 +1,4 @@
+## Version stable : 0.4.2
 
 Welcome to the **Websites Factory library** (beta).
 

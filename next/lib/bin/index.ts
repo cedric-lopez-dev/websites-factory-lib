@@ -82,7 +82,7 @@ if (command)
 
     }
 else {
-    exec('npm install websites-factory', { cwd: process.cwd() }, (error, stdout, stderr) => {
+    exec('npm install websites-factory@0.4.2', { cwd: process.cwd() }, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error during installation: ${error.message}`);
             return;
