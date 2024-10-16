@@ -1,6 +1,6 @@
-import { PageResult } from "./types";
+import { PageResult } from "../core/types";
 import React from "react";
-import { Providers } from '@/websites-factory/Providers'
+import { Providers } from 'websites-factory/context'
 export const PageRenderer = ({ pageResult }: { pageResult: PageResult }) => {
     const {
         PageComponent,

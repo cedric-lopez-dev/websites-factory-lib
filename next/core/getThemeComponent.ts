@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { useTheme } from "@/websites-factory/themeContext";
+import { useTheme } from "@/core/themeContext";
 
 export const getThemeComponent = (componentUIGroup, component) => {
 

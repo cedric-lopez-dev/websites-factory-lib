@@ -1,6 +1,6 @@
 {
   "name": "websites-factory",
-  "version": "0.3.36",
+  "version": "0.3.43",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -46,7 +46,6 @@
     "index.d.ts",
     "index.js",
     "ui.js",
-    "Provider.jsx",
-    "themeContext.jsx"
+    "context.js"
   ]
 }

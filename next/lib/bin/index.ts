@@ -94,8 +94,6 @@ else {
         const baseDir = process.cwd();
         createDirectories(baseDir);
         copyFolder(baseDir);
-        // copyFile(baseDir, 'websites-factory-config.json');
-        // copyFile(baseDir, 'entities.json');
         console.log('Installation of websites-factory completed.');
     });
 }

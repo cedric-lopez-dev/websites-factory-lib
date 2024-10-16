@@ -57,4 +57,11 @@ export default defineConfig([
         dts: false,
         clean: true,
     },
+    {
+        entry: ['lib/context.js'],
+        format: ['esm'],
+        outDir: 'build',
+        dts: false,
+        clean: true,
+    },
 ]);
