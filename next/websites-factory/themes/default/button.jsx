@@ -1,11 +1,11 @@
-'use client'
-export const Button = ({ className, test, ...props }) => {
+
+import { twMerge } from 'tailwind-merge'
+export const Button = ({ className, refUI, ...props }) => {
     return <div
-        className={`${className}`}
+        className={twMerge('', className)}
+        ref={refUI}
         {...props} >
         {props.children}
     </div>
 }
-Button.displayName = "Button"
-
 

@@ -22,6 +22,7 @@ export interface Page {
     subPage?: {
         [key: string]: Page;
     };
+    theme: string
 }
 
 export type Sections = Section[];
@@ -71,4 +72,5 @@ export interface PageResult {
     PageLayoutComponent: ComponentType<PropsWithChildren> | null;
     pageMetadata: Metadata | null;
     pageEntities: EntityInstance[] | null
+    theme: string | null
 }

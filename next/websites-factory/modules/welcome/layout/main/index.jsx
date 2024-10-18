@@ -1,12 +1,10 @@
-import { ReactNode } from 'react';
-import Navbar from '../../sections/navbar';
-import Footer from '../../sections/footer';
 
-interface Props {
-    children: ReactNode;
-}
+import Navbar from '../sections/navbar';
+import Footer from '../sections/footer';
 
-const Main = ({ children }: Props) => {
+
+
+const Main = ({ children }) => {
     return (
         <div className="min-h-screen flex flex-col" >
             <Navbar />

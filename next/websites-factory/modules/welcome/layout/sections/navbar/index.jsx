@@ -1,5 +1,6 @@
 
 
+
 const Navbar = () => {
     return (
         <div className="bg-cyan-600 flex justify-center">

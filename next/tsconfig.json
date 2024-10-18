@@ -45,7 +45,13 @@
     "core/functions.ts.test",
     "lib/bin/index.ts",
     "websites-factory-modules/helloWorld/pages/hello/index.jsx",
-    "core/ui/button.jsx"
+    "core/ui/button.jsx",
+    "websites-factory/useGetThemeComponent.js",
+    "websites-factory/PageRenderer.jsx",
+    "websites-factory/modules/welcome/layout/main/index.jsx",
+    "websites-factory/modules/welcome/layout/sections/navbar/index.jsx",
+    "websites-factory/modules/welcome/layout/sections/footer/index.jsx",
+    "websites-factory/modules/welcome/sections/introduction/index.jsx"
   ],
   "exclude": [
     "node_modules"
