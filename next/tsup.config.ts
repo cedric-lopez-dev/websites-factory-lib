@@ -49,12 +49,5 @@ export default defineConfig([
         outDir: 'build/bin',
         dts: false,
         clean: false,
-    },
-    {
-        entry: ['lib/ui.ts'],
-        format: ['esm'],
-        outDir: 'build',
-        dts: false,
-        clean: true,
     }
 ]);

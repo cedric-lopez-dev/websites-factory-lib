@@ -2,7 +2,7 @@
 import { Button } from "@/websites-factory/ui/button";
 import { Container, Section } from "@/websites-factory/ui/layout";
 import { Hero, HeroDescription, HeroSubtitle, HeroTitle } from "@/websites-factory/ui/hero";
-import { Logo } from '../../components/logo'
+import { LogoAnimated } from '../../components/logo'
 import Link from "next/link";
 
 
@@ -12,7 +12,7 @@ const Introduction = () => {
         <Section>
             <Container>
                 <Hero>
-                    <Logo />
+                    <LogoAnimated />
                     <HeroTitle>
                         Websites Factory
                     </HeroTitle>

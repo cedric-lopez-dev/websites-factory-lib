@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useMemo, useState } from 'react';
-export const Logo = () => {
+
+export const LogoAnimated = () => {
     const positionsArray = useMemo(() => {
         const pos1 = [0, 0, 1, 1, 0, 1, 0, 1, 1];
         const pos2 = [1, 0, 0, 0, 1, 1, 1, 1, 0];
@@ -11,11 +12,7 @@ export const Logo = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [positions, setPositions] = useState(positionsArray[currentIndex]);
 
-    const Rect = () => {
-        return <svg className={`w-[20px] h-[20px]`} xmlns="http://www.w3.org/2000/svg">
-            <rect width='20' height='20' className={`fill-cyan-600`} />
-        </svg>
-    }
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => {
@@ -34,13 +31,30 @@ export const Logo = () => {
                 positions.map((position, i) => {
                     if (position === 0)
                         return <div key={i} />
-                    return <Rect key={i} col={position} />
+                    return <Rect key={i} col={position} color={`fill-cyan-600`} />
                 })
             }
         </div>
     );
 };
 
+export const LogoStatic = () => {
+    const positions = [0, 0, 1, 1, 0, 1, 0, 1, 1];
+    return (
+        <div className={`grid grid-cols-3 w-[60px] h-[60px]`}>
+            {
+                positions.map((position, i) => {
+                    if (position === 0)
+                        return <div key={i} />
+                    return <Rect key={i} col={position} color={`fill-white`} />
+                })
+            }
+        </div>
+    )
+}
 
-
-export default Logo;
+const Rect = ({ color }) => {
+    return <svg className={`w-[20px] h-[20px]`} xmlns="http://www.w3.org/2000/svg">
+        <rect width='20' height='20' className={color} />
+    </svg>
+}

@@ -1,32 +1,51 @@
-import React from 'react';
+
+import Link from 'next/link'
 import { Container, Section } from "@/websites-factory/ui/layout";
-import { Features } from "@/websites-factory/ui/features";
+import { Features, Feature, FeatureContainer, FeatureTitle } from "@/websites-factory/ui/features";
+import { Paragraph, Strong } from '@/websites-factory/ui/text';
+import { Button } from '@/websites-factory/ui/button'
+import { Icon } from '@/websites-factory/ui/icons';
 const WelcomeFeatures = () => {
     return (
         <Container>
-            <Section variant="Small">
+            <Section>
                 <Features>
-                    <div className="relative pl-16">
-                        <dt className="text-base font-semibold leading-7 text-gray-900">
-                            <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-600">
+                    <Feature>
+                        <FeatureContainer>
+                            <Icon>
                                 👋
-                            </div>
-                            Hello World !
-                        </dt>
-                        <dd className="mt-2 text-base leading-7 text-gray-600">Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.</dd>
-                    </div>
-                    <div className="relative pl-16">
-                        <dt className="text-base font-semibold leading-7 text-gray-900">
-                            <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-600">
+                            </Icon>
+                        </FeatureContainer>
+                        <FeatureContainer>
+                            <FeatureTitle>Hello World !</FeatureTitle>
+                            <Paragraph>This example page shows how Website Factory <Strong>generates pages</Strong> from its configuration file. Feel free to modify the config and observe the result!</Paragraph>
+                            <Link href="/hello-world">
+                                <Button>
+                                    Go to Hello World
+                                </Button>
+                            </Link>
+
+                        </FeatureContainer>
+                    </Feature>
+                    <Feature>
+                        <FeatureContainer>
+                            <Icon>
                                 🎨
-                            </div>
-                            Themes
-                        </dt>
-                        <dd className="mt-2 text-base leading-7 text-gray-600">Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.</dd>
-                    </div>
+                            </Icon>
+                        </FeatureContainer>
+                        <FeatureContainer>
+                            <FeatureTitle>Themes</FeatureTitle>
+                            <Paragraph>Websites Factory handles the <Strong>creation and management of themes.</Strong> The Hello Theme example page allows you to test different themes</Paragraph>
+                            <Link href="/hello-themes">
+                                <Button>
+                                    Go to Hello Themes
+                                </Button>
+                            </Link>
+                        </FeatureContainer>
+                    </Feature>
                 </Features>
             </Section>
-        </Container>
+        </Container >
     );
 };
 

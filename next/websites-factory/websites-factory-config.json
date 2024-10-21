@@ -46,7 +46,7 @@
             "sections": [
                 {
                     "module": "helloWorld",
-                    "name": "heroHello"
+                    "name": "heroHelloWorld"
                 }
             ],
             "theme": "welcome",
@@ -62,6 +62,25 @@
                     ]
                 }
             }
+        },
+        "hello-themes": {
+            "module": "helloWorld",
+            "page": "helloThemes",
+            "layout": {
+                "module": "welcome",
+                "name": "main"
+            },
+            "sections": [
+                {
+                    "module": "helloWorld",
+                    "name": "heroHelloThemes"
+                },
+                {
+                    "module": "helloWorld",
+                    "name": "switchThemes"
+                }
+            ],
+            "theme": "welcome"
         }
     },
     "entities": {

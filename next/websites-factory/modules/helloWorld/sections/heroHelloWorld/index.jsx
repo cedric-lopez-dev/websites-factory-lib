@@ -2,7 +2,7 @@
 import { Container, Section } from "@/websites-factory/ui/layout";
 import { Hero, HeroTitle, HeroSubtitle, HeroDescription } from "@/websites-factory/ui/hero";
 import { Strong } from "@/websites-factory/ui/text";
-const HeroHello = () => {
+const HeroHelloWorld = () => {
     return (
         <Section>
             <Container>
@@ -24,4 +24,4 @@ const HeroHello = () => {
     );
 };
 
-export default HeroHello;
+export default HeroHelloWorld;

@@ -13,9 +13,8 @@ export const Container = forwardRef(({ ...props }, ref) => {
 
 Container.displayName = "Container"
 
-export const Section = forwardRef(({ variant, ...props }, ref) => {
-    const type = "Section" + (variant || "")
-    const Component = useGetThemeComponent(componentUIGroup, type)
+export const Section = forwardRef(({ ...props }, ref) => {
+    const Component = useGetThemeComponent(componentUIGroup, "Section")
     return <Component {...props} refUI={ref}></Component>
 })
 

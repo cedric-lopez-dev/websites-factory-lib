@@ -20,13 +20,3 @@ export const Section = ({ className, refUI, ...props }) => {
         {props.children}
     </section>
 }
-
-export const SectionSmall = ({ className, refUI, ...props }) => {
-    return <section
-        className={twMerge('mx-auto py-8 lg:py-12 max-w-5xl', className)}
-        ref={refUI}
-        {...props}
-    >
-        {props.children}
-    </section>
-}
