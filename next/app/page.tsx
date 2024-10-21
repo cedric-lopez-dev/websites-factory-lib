@@ -1,51 +1,18 @@
-import { getPage, populateMetadata } from "websites-factory";
-import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ReactElement } from "react";
+import { getPage, PageRenderer } from "websites-factory";
+import { Providers } from "@/websites-factory/Providers"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const pageResult = await getPage()
+const page = async ({ params }) => {
+  const pageResult = await getPage(params);
   if (!pageResult) {
     notFound();
   }
-  const populatedMetadata = populateMetadata(pageResult)
-  return populatedMetadata
-}
-
-export default async function Home(): Promise<ReactElement> {
-
-  const pageResult = await getPage()
-  if (!pageResult) {
-    notFound();
-  }
-  const { PageComponent, pageSectionsComponents, PageLayoutComponent } = pageResult
-  if (PageLayoutComponent)
-    return (
-      <>
-        <PageLayoutComponent>
-          <PageComponent>
-            {
-              pageSectionsComponents.map((Section, i) => {
-                if (Section)
-                  return <  Section key={i} />
-              })
-            }
-          </PageComponent>
-        </PageLayoutComponent>
-      </>
-    );
-
-
-
+  const { theme } = pageResult
   return (
-    <PageComponent>
-      {
-        pageSectionsComponents.map((Section, i) => {
-          if (Section)
-            return <  Section key={i} />
-        })
-      }
-    </PageComponent>
+    <Providers themeTemplate={theme}>
+      <PageRenderer pageResult={pageResult} />
+    </Providers>
   );
-}
+};
 
+export default page;

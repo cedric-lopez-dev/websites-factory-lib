@@ -1,6 +1,6 @@
 {
   "name": "websites-factory",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -19,16 +19,16 @@
     "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
+    "fs-extra": "^11.2.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
     "tsup": "^8.2.4",
-    "fs-extra": "^11.2.0"
+    "typescript": "^5"
   },
   "author": "Cedric Lopez",
   "email": "66cedric.lopez@gmail.com",
@@ -45,6 +45,10 @@
     "export",
     "index.d.ts",
     "index.js",
-    "ui.js"
-  ]
+    "ui.js",
+    "context.js"
+  ],
+  "dependencies": {
+    "tailwind-merge": "^2.5.4"
+  }
 }

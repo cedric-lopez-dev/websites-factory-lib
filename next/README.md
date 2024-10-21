@@ -1,6 +1,6 @@
-## Version stable : 0.4.2
+# Websites Factory library (Beta)
 
-Welcome to the **Websites Factory library** (beta).
+Welcome to the **Websites Factory library**.
 
 This library aims to generate pages in [Next.js](https://nextjs.org) from your modules or modules created by the community.
 
@@ -350,4 +350,48 @@ The sections provided by the module should be placed in a `sections` folder and 
 
 # Themes
 
-*coming soon*
+## Providers
+
+To use theme management, you need to add the context provider to the pages and provide it with the theme from the configuration.
+
+```js
+import { notFound } from "next/navigation";
+import { getPage, PageRenderer } from "websites-factory";
+import { Providers } from "@/websites-factory/Providers"
+
+const page = async ({ params }) => {
+  const pageResult = await getPage(params);
+  if (!pageResult) {
+    notFound();
+  }
+  const { theme } = pageResult
+  return (
+    <Providers themeTemplate={theme}>
+      <PageRenderer pageResult={pageResult} />
+    </Providers>
+  );
+};
+
+export default page;
+  ```
+
+## UI
+
+Modules can import components from the `@/websites-factory/ui` folder.
+
+Example:
+
+
+```js
+import { Button } from "@/websites-factory/ui/button";
+```
+
+UI components can be imported from both server-side and client-side components.
+
+> (Beta)
+**Note**: ⚠️ Currently, all UI components (even when imported into a server-side component) are imported on the client side.
+This is due to the use of context in the theme components import. I plan to change this so that components are only loaded on the client side when necessary.
+
+## New Theme
+
+To create a theme, you need to copy the default theme from `websites-factory/themes`. Only the components provided by the UI are available.

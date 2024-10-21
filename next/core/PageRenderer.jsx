@@ -1,7 +1,6 @@
-import { PageResult } from "./types";
-import React from "react";
 
-export const PageRenderer = ({ pageResult }: { pageResult: PageResult }) => {
+import React from "react";
+export const PageRenderer = ({ pageResult }) => {
     const {
         PageComponent,
         pageSectionsComponents,
