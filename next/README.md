@@ -1,5 +1,6 @@
+# Websites Factory library (Beta)
 
-Welcome to the **Websites Factory library** (beta).
+Welcome to the **Websites Factory library**.
 
 This library aims to generate pages in [Next.js](https://nextjs.org) from your modules or modules created by the community.
 
@@ -148,7 +149,7 @@ Creation of metadata. The different texts accept variables in the format {{varia
 The `subPage` key allows nesting a subpage within a page. A subpage functions like a top-level page, with its key being the path of the subpage.
 You can nest as many `subPage` as you like
 
-> **Note**: Note: the entry point "/" corresponds to the site's index page. It does not accept any subPages. The subpages of the index page are the other keys of type entrypoints.
+> **Note**: the entry point "/" corresponds to the site's index page. It does not accept any subPages. The subpages of the index page are the other keys of type entrypoints.
 
 ```json
     "template": {
@@ -260,7 +261,7 @@ export default page;
 
 `getPage` returns the elements of a page using the `websites-factory-config`. The function takes the `params` object from [Next.js](https://nextjs.org) as a parameter.
 
-**Note**: For the sake of clarity, it was decided to use the same template for the root page and for all other pages. In reality, for the root page, `params` are not necessary to build it.
+> **Note**: For the sake of clarity, it was decided to use the same template for the root page and for all other pages. In reality, for the root page, `params` are not necessary to build it.
 ⚠️ In the absence of `params`, the "/" template will always be generated.
 
 If you want to customize the rendering of your page, you can use the elements returned by getPage :
@@ -321,7 +322,7 @@ You can also retrieve the page metadata directly from the result of `getPage`:
 The getPage function also returns entities as instances.
 
 > (Beta)
-**Note**: Note: This feature is still in development. Currently, an entity instance is composed of the entity name and the findOne function. The idea is that modules will use the mapping in their configuration to match their attributes with those of the page's entities.
+**Note**: This feature is still in development. Currently, an entity instance is composed of the entity name and the findOne function. The idea is that modules will use the mapping in their configuration to match their attributes with those of the page's entities.
 FindOne retrieves the corresponding entity from `entities.json`
 
 ```js
@@ -349,4 +350,48 @@ The sections provided by the module should be placed in a `sections` folder and 
 
 # Themes
 
-*coming soon*
+## Providers
+
+To use theme management, you need to add the context provider to the pages and provide it with the theme from the configuration.
+
+```js
+import { notFound } from "next/navigation";
+import { getPage, PageRenderer } from "websites-factory";
+import { Providers } from "@/websites-factory/Providers"
+
+const page = async ({ params }) => {
+  const pageResult = await getPage(params);
+  if (!pageResult) {
+    notFound();
+  }
+  const { theme } = pageResult
+  return (
+    <Providers themeTemplate={theme}>
+      <PageRenderer pageResult={pageResult} />
+    </Providers>
+  );
+};
+
+export default page;
+  ```
+
+## UI
+
+Modules can import components from the `@/websites-factory/ui` folder.
+
+Example:
+
+
+```js
+import { Button } from "@/websites-factory/ui/button";
+```
+
+UI components can be imported from both server-side and client-side components.
+
+> (Beta)
+**Note**: ⚠️ Currently, all UI components (even when imported into a server-side component) are imported on the client side.
+This is due to the use of context in the theme components import. I plan to change this so that components are only loaded on the client side when necessary.
+
+## New Theme
+
+To create a theme, you need to copy the default theme from `websites-factory/themes`. Only the components provided by the UI are available.
