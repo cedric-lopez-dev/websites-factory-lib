@@ -47,14 +47,18 @@ Replace the code in the page.js or page.tsx file created by Next.js:
 ```js
 import { notFound } from "next/navigation";
 import { getPage, PageRenderer } from "websites-factory";
+import { Providers } from "@/websites-factory/Providers"
 
 const page = async ({ params }) => {
   const pageResult = await getPage(params);
   if (!pageResult) {
     notFound();
   }
+  const { theme } = pageResult
   return (
-    <PageRenderer pageResult={pageResult} />
+    <Providers themeTemplate={theme}>
+      <PageRenderer pageResult={pageResult} />
+    </Providers>
   );
 };
 
@@ -244,16 +248,21 @@ For dynamic routes, you need to create a `[...slug]` folder with a page template
 ```js
 import { notFound } from "next/navigation";
 import { getPage, PageRenderer } from "websites-factory";
+import { Providers } from "@/websites-factory/Providers"
 
 const page = async ({ params }) => {
   const pageResult = await getPage(params);
   if (!pageResult) {
     notFound();
   }
+  const { theme } = pageResult
   return (
-    <PageRenderer pageResult={pageResult} />
+    <Providers themeTemplate={theme}>
+      <PageRenderer pageResult={pageResult} />
+    </Providers>
   );
 };
+
 export default page;
 ```
 
