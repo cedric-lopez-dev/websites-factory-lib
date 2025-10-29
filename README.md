@@ -1,5 +1,11 @@
 # Websites Factory
 
+> **⚠️ IMPORTANT: Experimental Project**
+> 
+> This project was an experiment and is **no longer actively maintained**. It was developed as a proof of concept to explore the possibilities of modular website generation with Next.js.
+> 
+> **Testing Requirements:** This project requires **Next.js 14**. It is not compatible with newer versions of Next.js.
+
 `Websites Factory` is a comprehensive solution for generating websites based on Next.js, allowing users to create and customize sites from modules and templates configured through JSON.
 
 ## Introduction
